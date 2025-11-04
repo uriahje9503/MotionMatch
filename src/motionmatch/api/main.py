@@ -68,6 +68,11 @@ async def root_index_single_video(video_path: str, skip_if_exists: bool = True):
     """Root-level single video indexing endpoint"""
     return await index_single_video(video_path, skip_if_exists)
 
+@app.post("/index/upload")
+async def root_index_upload(file: UploadFile = File(...), skip_if_exists: bool = Form(True)):
+    """Root-level upload indexing endpoint"""
+    return await index_uploaded_video(file, skip_if_exists)
+
 @app.post("/search")
 async def root_search_videos(request: SearchRequest):
     """Root-level search endpoint"""
@@ -216,6 +221,39 @@ async def index_single_video(video_path: str, skip_if_exists: bool = True):
         
     except Exception as e:
         logger.error(f"Single video indexing failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@v1_router.post("/index/upload")
+async def index_uploaded_video(file: UploadFile = File(...), skip_if_exists: bool = Form(True)):
+    """Index an uploaded video file"""
+    import tempfile
+    import shutil
+    
+    try:
+        # Save uploaded file to temp location
+        with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(file.filename)[1]) as tmp_file:
+            shutil.copyfileobj(file.file, tmp_file)
+            tmp_path = tmp_file.name
+        
+        try:
+            # Index the video with original filename
+            success = indexing_service.index_single_video(
+                tmp_path, 
+                skip_if_exists=skip_if_exists,
+                original_filename=file.filename
+            )
+            
+            if success:
+                return {"status": "success", "message": f"Video indexed successfully: {file.filename}"}
+            else:
+                raise HTTPException(status_code=500, detail="Indexing failed")
+        finally:
+            # Clean up temp file
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+        
+    except Exception as e:
+        logger.error(f"Upload indexing failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @v1_router.get("/index/status/{job_id}", response_model=IndexStatus)

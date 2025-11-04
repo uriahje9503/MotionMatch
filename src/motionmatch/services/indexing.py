@@ -133,12 +133,13 @@ class IndexingService:
             logger.error(f"Failed to get duration for {video_path}: {e}")
             return 0.0
     
-    def index_single_video(self, video_path: str, skip_if_exists: bool = True) -> bool:
+    def index_single_video(self, video_path: str, skip_if_exists: bool = True, original_filename: str = None) -> bool:
         """Index a single video (synchronous)
         
         Args:
             video_path: Path to video file
             skip_if_exists: If True, skip indexing if video already exists
+            original_filename: Original filename to use as video_id (for uploaded files)
             
         Returns:
             True if indexed successfully or already exists, False otherwise
@@ -148,8 +149,11 @@ class IndexingService:
                 logger.error(f"Video file not found: {video_path}")
                 return False
             
-            # Generate video ID - match the format used by encoder (absolute path without extension)
-            video_id = os.path.abspath(video_path).rsplit('.', 1)[0]
+            # Generate video ID - use original filename if provided, otherwise use path
+            if original_filename:
+                video_id = os.path.splitext(original_filename)[0]
+            else:
+                video_id = os.path.abspath(video_path).rsplit('.', 1)[0]
             
             # Check if already indexed
             if skip_if_exists:
@@ -159,8 +163,8 @@ class IndexingService:
                     logger.info(f"Video already indexed, skipping")
                     return True
             
-            # Encode video
-            features = encoder_service.encode_video(video_path)
+            # Encode video with the video_id
+            features = encoder_service.encode_video(video_path, video_id=video_id)
             
             # Get video duration
             duration = self._get_video_duration(video_path)

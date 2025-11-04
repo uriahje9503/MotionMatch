@@ -8,6 +8,12 @@ A physics-based video search engine using Meta's V-JEPA 2 world model to find vi
 
 > **Note**: This project explores **zero-shot video retrieval** using V-JEPA 2 embeddings directly for similarity search, without any fine-tuning or training. This approach provides a baseline for motion-based search but has limitations in cross-domain scenarios. For production use, fine-tuning on domain-specific data would significantly improve results.
 
+## Sample Results
+
+![Sample search results on YouTube dataset](sample_results_youtube_dataset.png)
+
+*Example: Searching for similar motion patterns in a YouTube video dataset. The system finds videos with comparable motion dynamics.*
+
 ## Features
 
 - **Motion-Aware Search**: Find videos by motion patterns, not just visual similarity

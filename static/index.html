@@ -423,12 +423,19 @@
                     showStatus('indexStatus', `Processing ${i + 1}/${indexFiles.length}: ${file.name}`, 'info', true);
                     
                     try {
-                        // Upload file first (simplified - in production would use proper file handling)
+                        // Upload file and index it
                         const formData = new FormData();
                         formData.append('file', file);
                         
-                        // For MVP, we'll simulate indexing by just showing progress
-                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        const response = await fetch('/index/upload', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+                        }
+                        
                         successful++;
                         
                     } catch (error) {

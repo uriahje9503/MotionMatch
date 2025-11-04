@@ -96,7 +96,7 @@ class VJEPA2EncoderService:
             logger.error(f"Failed to load video {video_path}: {e}")
             raise
     
-    def encode_video(self, video_path: str, use_amp: bool = True) -> VideoFeatures:
+    def encode_video(self, video_path: str, use_amp: bool = True, video_id: str = None) -> VideoFeatures:
         """Encode video to V-JEPA 2 features
         
         Args:
@@ -238,8 +238,9 @@ class VJEPA2EncoderService:
                 "temporal_shape": list(temporal_features.shape)
             }
             
-            # Extract video ID - use absolute path without extension for uniqueness
-            video_id = os.path.abspath(video_path).rsplit('.', 1)[0]
+            # Extract video ID - use provided video_id or absolute path without extension
+            if video_id is None:
+                video_id = os.path.abspath(video_path).rsplit('.', 1)[0]
             
             return VideoFeatures(
                 video_id=video_id,

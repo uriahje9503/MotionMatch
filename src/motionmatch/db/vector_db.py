@@ -207,7 +207,11 @@ class VectorDBService:
     def get_video_count(self) -> int:
         """Get total number of videos in database"""
         try:
-            return self.collection.num_entities
+            # Flush to ensure all data is persisted
+            self.collection.flush()
+            # Get stats to get accurate count
+            stats = self.collection.num_entities
+            return stats
         except Exception as e:
             logger.error(f"Failed to get video count: {e}")
             return 0
